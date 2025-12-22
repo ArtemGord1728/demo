@@ -1,0 +1,8 @@
+fastapi==0.127.0
+uvicorn==0.40.0
+openai>=2.14.0
+sqlalchemy==2.0.45
+python-multipart
+python-dotenv
+aiofiles
+pydantic-settings==2.12.0

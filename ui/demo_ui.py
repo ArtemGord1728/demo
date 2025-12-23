@@ -4,7 +4,7 @@ import os
 
 BACKEND_URL = os.getenv("BACKEND_URL", "http://backend:8000")
 
-st.set_page_config(page_title="PDF Summary AI", page_icon="📄", layout="wide")
+st.set_page_config(page_title="PDF Summary", layout="wide")
 
 if 'summary' not in st.session_state:
     st.session_state.summary = None

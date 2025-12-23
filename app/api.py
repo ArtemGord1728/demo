@@ -32,6 +32,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.get("/audio/{filename}")
 async def get_audio(filename: str):
     safe_filename = os.path.basename(filename)
@@ -86,6 +87,7 @@ def upload_pdf(file: UploadFile = File(...), db: Session = Depends(get_db)):
     finally:
         if file_path.exists():
             os.remove(file_path)
+
 
 @app.get("/history", response_model=List[DocumentResponse])
 def get_history(db: Session = Depends(get_db)):

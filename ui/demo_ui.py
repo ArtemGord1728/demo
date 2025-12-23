@@ -11,6 +11,7 @@ if 'summary' not in st.session_state:
 if 'info' not in st.session_state:
     st.session_state.info = {}
 
+
 def get_history():
     try:
         response = requests.get(f"{BACKEND_URL}/history", timeout=5)
@@ -18,6 +19,7 @@ def get_history():
     except Exception as e:
         st.error(f"Failed to fetch history: {e}")
         return []
+
 
 def get_audio_bytes(filename):
     try:
@@ -29,10 +31,11 @@ def get_audio_bytes(filename):
     except Exception:
         return None
 
+
 def upload_file(file):
     files = {"file": (file.name, file, "application/pdf")}
     try:
-        with st.spinner("AI is analyzing (this takes 20-40s)..."):
+        with st.spinner("Analyzing..."):
             response = requests.post(f"{BACKEND_URL}/upload", files=files, timeout=60)
 
         if response.status_code == 200:
@@ -50,6 +53,7 @@ def upload_file(file):
             st.error(f"Error: {detail}")
     except Exception as e:
         st.error(f"Connection error: {e}")
+
 
 with st.sidebar:
     st.title("🕒 History")
@@ -82,7 +86,6 @@ if st.session_state.summary:
     col2.metric("Tokens Used", f"{info.get('tokens', 0):,}", border=True)
     col3.metric("Est. Cost", f"${info.get('cost', 0):.5f}", border=True)
 
-    # Аудио плеер
     audio_file = info.get('audio')
     if audio_file:
         st.write("### 🎧 Listen to Summary")

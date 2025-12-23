@@ -10,5 +10,6 @@ class Settings(BaseSettings):
     UPLOAD_DIR: Path = BASE_DIR / "uploads"
     model_config = SettingsConfigDict(env_file="../.env", env_file_encoding="utf-8")
 
+
 settings = Settings()
 settings.UPLOAD_DIR.mkdir(exist_ok=True)

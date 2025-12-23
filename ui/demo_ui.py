@@ -36,7 +36,7 @@ def upload_file(file):
     files = {"file": (file.name, file, "application/pdf")}
     try:
         with st.spinner("Analyzing..."):
-            response = requests.post(f"{BACKEND_URL}/upload", files=files, timeout=60)
+            response = requests.post(f"{BACKEND_URL}/upload", files=files)
 
         if response.status_code == 200:
             data = response.json()

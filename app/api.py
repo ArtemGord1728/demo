@@ -49,6 +49,8 @@ def upload_pdf(file: UploadFile = File(...), db: Session = Depends(get_db)):
     if file.content_type != "application/pdf":
         raise HTTPException(status_code=400, detail="Only PDF files are allowed")
 
+    os.makedirs(UPLOAD_DIR, exist_ok=True)
+
     safe_filename = os.path.basename(file.filename)
     file_path = UPLOAD_DIR / safe_filename
 

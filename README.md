@@ -45,3 +45,38 @@
 │   └── Dockerfile
 ├── .env               
 └── docker-compose.yml 
+
+## ⚡ Setup & Installation
+
+Follow these steps to get the application running in minutes using Docker.
+
+### Prerequisites
+* **Docker** and **Docker Compose** installed on your machine.
+* An active **OpenAI API Key** (you can get it [here](https://platform.openai.com/api-keys)).
+
+### 1. Clone the repository
+```bash
+git clone <your-repo-url>
+cd demo
+````
+
+## 2. Configure Environment
+Create a .env file in the root directory of the project. This file will store your sensitive API keys and is excluded from version control.
+
+Open .env and add your OpenAI API Key:
+
+OPENAI_API_KEY=sk-proj-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+## 3. Build and Run
+Start the application using Docker Compose. This command will build the images for both Backend and Frontend and start the services.
+```bash
+docker-compose up --build
+```
+
+## 4. Access the Application
+Once the logs show that the server is running, you can access the app:
+
+Frontend (UI): http://localhost:8501 – Upload PDFs here.
+
+Backend (API Docs): http://localhost:8000/docs – Explore the API endpoints.
+
